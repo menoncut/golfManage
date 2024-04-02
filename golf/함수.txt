@@ -1,0 +1,37 @@
+<select name="c_name" onchange="fn_change1();">
+	<option value="10001">홍길동</option>
+	<option value="10002">장발장</option>
+	<option value="10003">임꺽정</option>
+	<option value="20001">성춘향</option>
+	<option value="20001">이몽룡</option>
+</select>
+
+function fn_change1() {
+	let fn = document.form;
+	/*중요*/
+	fn.tuition value = ""; //회원별 할인율을 적용해야 하므로 수강료 초기화
+	fn.teacher_code.options[0].selected = true; //셀렉트박스 초기화
+
+	fn.c_no.value = fn.c_name.value; //회원번호 넣어주기
+}
+
+function fn_change2() {
+	let fn = document.form;
+	let price = fn.teacher_code.value * 1000; //수강료
+	let c_no = fn.c_no.value; //회원번호 20000이상 50%
+
+	if (c_no >= 20000) {
+		price *= 0.5; //50%할인
+	}
+	
+	fn.tuituin.value = price; //수강료 넣어주기
+}
+
+function fn_reset() {
+	if(confirm("정보를 지우고 처음부터 다시 입력합니다.")) {
+		location="join.jsp";
+	}
+}
+
+
+
